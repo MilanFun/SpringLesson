@@ -17,4 +17,16 @@
     <constructor-arg value="Thomas"/>
   </bean>
 
+  <bean id="musicBean"
+        class = "framework.lesson.ioc.ClassicalMusic">
+  </bean>
+
+  <bean id="musicBean1"
+        class="framework.lesson.ioc.RockMusic">
+  </bean>
+
+  <bean id="jazzMusic"
+        class="framework.lesson.ioc.JazzMusic">
+  </bean>
+
 </beans>
