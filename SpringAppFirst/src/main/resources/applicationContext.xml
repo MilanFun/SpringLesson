@@ -29,4 +29,9 @@
         class="framework.lesson.ioc.JazzMusic">
   </bean>
 
+  <bean id="musicPlayer"
+        class="framework.lesson.ioc.MusicPlayer">
+    <constructor-arg ref="musicBean"/>
+  </bean>
+
 </beans>

@@ -31,5 +31,10 @@ public class TestSpring {
     MusicPlayer musicPlayer2 = new MusicPlayer(music2);
     musicPlayer2.playMusic();
     context3.close();
+
+    ClassPathXmlApplicationContext context4 = new ClassPathXmlApplicationContext("applicationContext.xml");
+    MusicPlayer musicPlayer3 = context4.getBean("musicPlayer", MusicPlayer.class);
+    musicPlayer3.playMusic();
+    context4.close();
   }
 }
