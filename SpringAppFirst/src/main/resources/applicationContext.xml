@@ -102,4 +102,17 @@
     <property name="name" value="${listMusic.name}"/>
   </bean>
 
+  <bean id="singletonBean"
+        class="framework.lesson.ioc.MusicPlayer">
+    <property name="music" ref="rap"/>
+    <property name="name" value="Singleton"/>
+    <property name="volume" value="100"/>
+  </bean>
+
+  <bean id="prototypeBean"
+        class="framework.lesson.ioc.MusicPlayer" scope="prototype">
+    <property name="music" ref="rap"/>
+    <property name="name" value="Prototype"/>
+    <property name="volume" value="100"/>
+  </bean>
 </beans>

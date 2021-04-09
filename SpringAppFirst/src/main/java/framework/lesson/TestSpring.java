@@ -60,6 +60,46 @@ public class TestSpring {
     ClassPathXmlApplicationContext context8 = new ClassPathXmlApplicationContext("applicationContext.xml");
     MusicPlayer musicPlayer7 = context8.getBean("listMusic", MusicPlayer.class);
     musicPlayer7.playMusicWithList();
+    System.out.println();
     context8.close();
+
+    //Scope Singleton
+    ClassPathXmlApplicationContext context9 = new ClassPathXmlApplicationContext("applicationContext.xml");
+    ClassPathXmlApplicationContext context10 = new ClassPathXmlApplicationContext("applicationContext.xml");
+    MusicPlayer musicPlayer8 = context9.getBean("singletonBean", MusicPlayer.class);
+    MusicPlayer musicPlayer9 = context9.getBean("singletonBean", MusicPlayer.class);
+    MusicPlayer musicPlayer10 = context10.getBean("prototypeBean", MusicPlayer.class);
+
+    if(musicPlayer8 == musicPlayer9) {
+      System.out.println("Singleton: " + true);
+    } else {
+      System.out.println("Prototype: " + false);
+    }
+
+    if(musicPlayer8 != musicPlayer10) {
+      System.out.println("Prototype: " + false);
+    } else {
+      System.out.println("Singleton: " + true);
+    }
+
+    System.out.println();
+    System.out.println("Before changing volume");
+
+    musicPlayer8.playMusic();
+    musicPlayer9.playMusic();
+    musicPlayer10.playMusic();
+
+    musicPlayer8.setVolume(10);
+    System.out.println("After changing volume in singleton");
+    musicPlayer8.playMusic();
+    musicPlayer9.playMusic();
+    musicPlayer10.playMusic();
+
+    musicPlayer10.setVolume(20);
+    System.out.println("After changing volume in prototype");
+    musicPlayer8.playMusic();
+    musicPlayer9.playMusic();
+    musicPlayer10.playMusic();
+    context9.close();
   }
 }
