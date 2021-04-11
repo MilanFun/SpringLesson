@@ -1,8 +1,11 @@
 package framework.lesson.ioc;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("music")
 public class MusicPlayer {
   private Music music;
   private String name;

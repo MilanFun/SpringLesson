@@ -1,9 +1,6 @@
 package framework.lesson;
 
-import framework.lesson.ioc.ClassicalMusic;
-import framework.lesson.ioc.JazzMusic;
-import framework.lesson.ioc.Music;
-import framework.lesson.ioc.MusicPlayer;
+import framework.lesson.ioc.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {
@@ -103,18 +100,40 @@ public class TestSpring {
 //    musicPlayer10.playMusic();
 //    context9.close();
 
-    //Lifecycle of Bean
-    System.out.println("\n" + "LIFECYCLE BEAN");
-    ClassPathXmlApplicationContext context11 = new ClassPathXmlApplicationContext("applicationContext.xml");
-    MusicPlayer musicPlayer11 = context11.getBean("classicalMusic", MusicPlayer.class);
-    musicPlayer11.playMusic();
-    context11.close();
+//    //Lifecycle of Bean
+//    System.out.println("\n" + "LIFECYCLE BEAN");
+//    ClassPathXmlApplicationContext context11 = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    MusicPlayer musicPlayer11 = context11.getBean("classicalMusic", MusicPlayer.class);
+//    musicPlayer11.playMusic();
+//    context11.close();
+//
+//    //Checking for Singleton scope
+//    System.out.println("\n" + "LIFECYCLE BEAN");
+//    ClassPathXmlApplicationContext context12 = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    MusicPlayer musicPlayer12 = context12.getBean("classicalMusic", MusicPlayer.class);
+//    musicPlayer12.playMusic();
+//    context11.close();
 
-    //Checking for Singleton scope
-    System.out.println("\n" + "LIFECYCLE BEAN");
-    ClassPathXmlApplicationContext context12 = new ClassPathXmlApplicationContext("applicationContext.xml");
-    MusicPlayer musicPlayer12 = context12.getBean("classicalMusic", MusicPlayer.class);
-    musicPlayer12.playMusic();
-    context11.close();
+    ClassPathXmlApplicationContext context13 = new ClassPathXmlApplicationContext("applicationContext.xml");
+    Music music1 = context13.getBean("classicalMusic", ClassicalMusic.class);
+    MusicPlayer musicPlayer13 = new MusicPlayer(music1);
+    musicPlayer13.playMusic();
+    context13.close();
+
+    ClassPathXmlApplicationContext context14 = new ClassPathXmlApplicationContext("applicationContext.xml");
+    Music music2 = context14.getBean("rapMusic", RapMusic.class);
+    MusicPlayer musicPlayer14 = new MusicPlayer(music2);
+    musicPlayer14.setVolume(78);
+    musicPlayer14.setName("Rap AK-47");
+    musicPlayer14.playMusic();
+    context14.close();
+
+    ClassPathXmlApplicationContext context15 = new ClassPathXmlApplicationContext("applicationContext.xml");
+    Music music3 = context15.getBean("classicalMusic", ClassicalMusic.class);
+    MusicPlayer musicPlayer15 = new MusicPlayer(music3);
+    musicPlayer15.setVolume(56);
+    musicPlayer15.setName("ClassicalMusic class with Factory-pattern");
+    musicPlayer15.playMusic();
+    context15.close();
   }
 }

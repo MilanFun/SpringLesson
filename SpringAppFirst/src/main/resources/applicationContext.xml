@@ -10,6 +10,9 @@
 
   <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
+<!--  Scanner component-->
+  <context:component-scan base-package="framework.lesson.ioc"/>
+
 <!--  <bean id="testBean1"-->
 <!--        class="framework.lesson.TestBean">-->
 <!--    <constructor-arg value="Neil"/>-->
@@ -116,17 +119,17 @@
 <!--    <property name="volume" value="100"/>-->
 <!--  </bean>-->
 
-  <bean id="classicalMusicWithInitAndDestroyMethod"
-        class="framework.lesson.ioc.ClassicalMusic"
-        init-method="init"
-        factory-method="getInstance"
-        destroy-method="destroy">
-  </bean>
+<!--  <bean id="classicalMusicWithInitAndDestroyMethod"-->
+<!--        class="framework.lesson.ioc.ClassicalMusic"-->
+<!--        init-method="init"-->
+<!--        factory-method="getInstance"-->
+<!--        destroy-method="destroy">-->
+<!--  </bean>-->
 
-  <bean id="classicalMusic"
-        class="framework.lesson.ioc.MusicPlayer">
-    <constructor-arg ref="classicalMusicWithInitAndDestroyMethod"/>
-    <property name="volume" value="25"/>
-    <property name="name" value="Lifecycle"/>
-  </bean>
+<!--  <bean id="classicalMusic"-->
+<!--        class="framework.lesson.ioc.MusicPlayer">-->
+<!--    <constructor-arg ref="classicalMusicWithInitAndDestroyMethod"/>-->
+<!--    <property name="volume" value="25"/>-->
+<!--    <property name="name" value="Lifecycle"/>-->
+<!--  </bean>-->
 </beans>
