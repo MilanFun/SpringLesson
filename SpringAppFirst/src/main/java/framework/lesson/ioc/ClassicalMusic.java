@@ -2,10 +2,14 @@ package framework.lesson.ioc;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Arrays;
 import java.util.List;
 
 @Component
+//@Scope("singleton")
+//@Scope("prototype")
 //Factory-pattern
 public class ClassicalMusic implements Music {
   private final List<String> listOfClassicalMusic = Arrays.asList("Mozart", "Rachmaninov", "Bah");
@@ -22,5 +26,15 @@ public class ClassicalMusic implements Music {
 
   public String getSongByInt(int i) {
     return this.listOfClassicalMusic.get(i);
+  }
+
+  @PostConstruct
+  public void init() {
+    System.out.println("Init method");
+  }
+
+  @PreDestroy
+  public void destroy() {
+    System.out.println("Destroy method");
   }
 }

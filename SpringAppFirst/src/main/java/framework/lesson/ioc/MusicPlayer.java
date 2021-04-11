@@ -2,12 +2,26 @@ package framework.lesson.ioc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("player")
 public class MusicPlayer {
   private Music music1;
   private Music music2;
+
+  @Value("${player.name}")
+  private String name;
+  @Value("${player.volume}")
+  private int volume;
+
+  public String getName() {
+    return name;
+  }
+
+  public int getVolume() {
+    return volume;
+  }
 
   //DI
   @Autowired
