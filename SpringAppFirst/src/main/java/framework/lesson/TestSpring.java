@@ -145,9 +145,9 @@ public class TestSpring {
 //    musicPlayer16.playMusic();
 //    context16.close();
 
-    ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-    Computer computer = classPathXmlApplicationContext.getBean("computer", Computer.class);
-    System.out.println(computer);
-    classPathXmlApplicationContext.close();
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    MusicPlayer musicPlayer = context.getBean("player", MusicPlayer.class);
+    musicPlayer.playMusic(Ganre.values());
+    context.close();
   }
 }

@@ -4,72 +4,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component("player")
 public class MusicPlayer {
-  private Music music;
-  private String name;
-  private int volume;
-  private List<Music> listOfMusic = new ArrayList<>();
+  private Music music1;
+  private Music music2;
 
-  private ClassicalMusic classicalMusic;
-  private RockMusic rockMusic;
-
-  public List<Music> getListOfMusic() {
-    return this.listOfMusic;
-  }
-
-  public void setListOfMusic(List<Music> listOfMusic) {
-    this.listOfMusic = listOfMusic;
-  }
-
-  public Music getMusic() {
-    return music;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getVolume() {
-    return volume;
-  }
-
-  public void setVolume(int volume) {
-    this.volume = volume;
-  }
-
-  //IoC
   //DI
   @Autowired
-  public MusicPlayer(ClassicalMusic music, RockMusic rockMusic) {
-    this.classicalMusic = music;
-    this.rockMusic = rockMusic;
+  public MusicPlayer(@Qualifier("classicalMusic") Music music1, @Qualifier("rockMusic") Music music2) {
+    this.music1 = music1;
+    this.music2 = music2;
   }
 
   public MusicPlayer(){}
 
   @Override
   public String toString() {
-    return "Playing " + this.classicalMusic.getSong() + ", " + this.rockMusic.getSong();
+    return "Playing " + this.music1.getSong() + ", " + this.music2.getSong();
   }
 
-  public void playMusicWithList() {
-    System.out.println("Name: " + this.name);
-    System.out.println("Volume: " + this.volume);
-    for(Music i : this.listOfMusic) {
-      System.out.print(i.getSong());
-      System.out.print(" ");
+  public <T extends Enum<T>> void playMusic(T[] val) {
+    for (T t : val) {
+      if (t == Ganre.CLASSICAL) {
+        int k = (int) (Math.random() * 3);
+        System.out.println(this.music1.getSongByInt(k));
+      }
+      if (t == Ganre.ROCK) {
+        int k = (int) (Math.random() * 3);
+        System.out.println(this.music2.getSongByInt(k));
+      }
     }
-  }
-
-  public void setMusic(Music music) {
-    this.music = music;
   }
 }
