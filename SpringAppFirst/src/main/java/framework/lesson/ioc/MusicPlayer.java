@@ -1,16 +1,21 @@
 package framework.lesson.ioc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("music")
+@Component("player")
 public class MusicPlayer {
   private Music music;
   private String name;
   private int volume;
   private List<Music> listOfMusic = new ArrayList<>();
+
+  private ClassicalMusic classicalMusic;
+  private RockMusic rockMusic;
 
   public List<Music> getListOfMusic() {
     return this.listOfMusic;
@@ -41,16 +46,18 @@ public class MusicPlayer {
   }
 
   //IoC
-  public MusicPlayer(Music music) {
-    this.music = music;
+  //DI
+  @Autowired
+  public MusicPlayer(ClassicalMusic music, RockMusic rockMusic) {
+    this.classicalMusic = music;
+    this.rockMusic = rockMusic;
   }
 
   public MusicPlayer(){}
 
-  public void playMusic() {
-    System.out.println("Playing: " + this.music.getSong());
-    System.out.println("Name: " + this.name);
-    System.out.println("Volume: " + this.volume);
+  @Override
+  public String toString() {
+    return "Playing " + this.classicalMusic.getSong() + ", " + this.rockMusic.getSong();
   }
 
   public void playMusicWithList() {

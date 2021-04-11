@@ -113,27 +113,41 @@ public class TestSpring {
 //    MusicPlayer musicPlayer12 = context12.getBean("classicalMusic", MusicPlayer.class);
 //    musicPlayer12.playMusic();
 //    context11.close();
+//
+//    ClassPathXmlApplicationContext context13 = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    Music music1 = context13.getBean("classicalMusic", ClassicalMusic.class);
+//    MusicPlayer musicPlayer13 = new MusicPlayer(music1);
+//    musicPlayer13.playMusic();
+//    context13.close();
+//
+//    ClassPathXmlApplicationContext context14 = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    Music music2 = context14.getBean("rapMusic", RapMusic.class);
+//    MusicPlayer musicPlayer14 = new MusicPlayer(music2);
+//    musicPlayer14.setVolume(78);
+//    musicPlayer14.setName("Rap AK-47");
+//    musicPlayer14.playMusic();
+//    context14.close();
+//
+//    ClassPathXmlApplicationContext context15 = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    Music music3 = context15.getBean("classicalMusic", ClassicalMusic.class);
+//    MusicPlayer musicPlayer15 = new MusicPlayer(music3);
+//    musicPlayer15.setVolume(56);
+//    musicPlayer15.setName("ClassicalMusic class with Factory-pattern");
+//    musicPlayer15.playMusic();
+//    context15.close();
 
-    ClassPathXmlApplicationContext context13 = new ClassPathXmlApplicationContext("applicationContext.xml");
-    Music music1 = context13.getBean("classicalMusic", ClassicalMusic.class);
-    MusicPlayer musicPlayer13 = new MusicPlayer(music1);
-    musicPlayer13.playMusic();
-    context13.close();
+//    //@Autowired annotation, DI
+//    ClassPathXmlApplicationContext context16 = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    MusicPlayer musicPlayer16 = context16.getBean("player", MusicPlayer.class);
+//    MusicPlayer musicPlayer16 = new MusicPlayer(context16.getBean("classicalMusic", ClassicalMusic.class));
+//    musicPlayer16.setName("@Autowired");
+//    musicPlayer16.setVolume(100);
+//    musicPlayer16.playMusic();
+//    context16.close();
 
-    ClassPathXmlApplicationContext context14 = new ClassPathXmlApplicationContext("applicationContext.xml");
-    Music music2 = context14.getBean("rapMusic", RapMusic.class);
-    MusicPlayer musicPlayer14 = new MusicPlayer(music2);
-    musicPlayer14.setVolume(78);
-    musicPlayer14.setName("Rap AK-47");
-    musicPlayer14.playMusic();
-    context14.close();
-
-    ClassPathXmlApplicationContext context15 = new ClassPathXmlApplicationContext("applicationContext.xml");
-    Music music3 = context15.getBean("classicalMusic", ClassicalMusic.class);
-    MusicPlayer musicPlayer15 = new MusicPlayer(music3);
-    musicPlayer15.setVolume(56);
-    musicPlayer15.setName("ClassicalMusic class with Factory-pattern");
-    musicPlayer15.playMusic();
-    context15.close();
+    ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    Computer computer = classPathXmlApplicationContext.getBean("computer", Computer.class);
+    System.out.println(computer);
+    classPathXmlApplicationContext.close();
   }
 }
