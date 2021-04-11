@@ -155,5 +155,31 @@ public class TestSpring {
     ClassicalMusic classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
     System.out.println(classicalMusic1 == classicalMusic2);
     context.close();
+
+    System.out.println();
+    Singleton singleton = Singleton.getInstance("A");
+    Singleton singleton1 = Singleton.getInstance("B");
+    System.out.println(singleton == singleton1);
+    System.out.println(singleton.getName() + " " + singleton1.getName());
+  }
+}
+
+class Singleton {
+  private static Singleton instance;
+  private String name;
+
+  private Singleton(String name){
+    this.name = name;
+  }
+
+  public static Singleton getInstance(String name) {
+    if(instance == null) {
+      instance = new Singleton(name);
+    }
+    return instance;
+  }
+
+  public String getName() {
+    return this.name;
   }
 }
