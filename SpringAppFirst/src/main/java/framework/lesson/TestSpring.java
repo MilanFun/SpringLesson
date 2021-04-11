@@ -1,6 +1,7 @@
 package framework.lesson;
 
 import framework.lesson.ioc.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {
@@ -145,41 +146,40 @@ public class TestSpring {
 //    musicPlayer16.playMusic();
 //    context16.close();
 
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-    MusicPlayer musicPlayer = context.getBean("player", MusicPlayer.class);
+//    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    MusicPlayer musicPlayer = context.getBean("player", MusicPlayer.class);
+//    System.out.println(musicPlayer);
+//    System.out.println("Name: " + musicPlayer.getName());
+//    System.out.println("Volume: " + musicPlayer.getVolume());
+//
+//    ClassicalMusic classicalMusic1 = context.getBean("classicalMusic", ClassicalMusic.class);
+//    ClassicalMusic classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
+//    System.out.println(classicalMusic1 == classicalMusic2);
+//    context.close();
+
+    /*
+    Spring Configuration via Class
+     */
+
+//    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//    MusicPlayer musicPlayer = context.getBean("player", MusicPlayer.class);
+//    System.out.println(musicPlayer);
+//    System.out.println(musicPlayer.getName());
+//    System.out.println(musicPlayer.getVolume());
+//    context.close();
+
+//    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//    MusicPlayer musicPlayer1 = context.getBean("musicPlayer1", MusicPlayer.class);
+//    MusicPlayer musicPlayer2 = context.getBean("musicPlayer2", MusicPlayer.class);
+//    System.out.println(musicPlayer1 + " " + musicPlayer1.getName() + " " + musicPlayer1.getVolume());
+//    System.out.println(musicPlayer2 + " " + musicPlayer2.getName() + " " + musicPlayer2.getVolume());
+//    context.close();
+
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+    MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
     System.out.println(musicPlayer);
-    System.out.println("Name: " + musicPlayer.getName());
-    System.out.println("Volume: " + musicPlayer.getVolume());
-
-    ClassicalMusic classicalMusic1 = context.getBean("classicalMusic", ClassicalMusic.class);
-    ClassicalMusic classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
-    System.out.println(classicalMusic1 == classicalMusic2);
+    System.out.println(musicPlayer.getName());
+    System.out.println(musicPlayer.getVolume());
     context.close();
-
-    System.out.println();
-    Singleton singleton = Singleton.getInstance("A");
-    Singleton singleton1 = Singleton.getInstance("B");
-    System.out.println(singleton == singleton1);
-    System.out.println(singleton.getName() + " " + singleton1.getName());
-  }
-}
-
-class Singleton {
-  private static Singleton instance;
-  private String name;
-
-  private Singleton(String name){
-    this.name = name;
-  }
-
-  public static Singleton getInstance(String name) {
-    if(instance == null) {
-      instance = new Singleton(name);
-    }
-    return instance;
-  }
-
-  public String getName() {
-    return this.name;
   }
 }
