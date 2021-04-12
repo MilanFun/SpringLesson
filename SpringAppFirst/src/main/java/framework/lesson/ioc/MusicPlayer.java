@@ -58,11 +58,11 @@ public class MusicPlayer {
 
   public <T extends Enum<T>> void playMusic(T[] val) {
     for (T t : val) {
-      if (t == Ganre.CLASSICAL) {
+      if (t == Genre.CLASSICAL) {
         int k = (int) (Math.random() * 3);
         System.out.println(this.music1.getSongByInt(k));
       }
-      if (t == Ganre.ROCK) {
+      if (t == Genre.ROCK) {
         int k = (int) (Math.random() * 3);
         System.out.println(this.music2.getSongByInt(k));
       }

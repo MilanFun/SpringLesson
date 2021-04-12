@@ -1,6 +1,6 @@
 package framework.lesson.ioc;
 
-public enum Ganre {
+public enum Genre {
   CLASSICAL,
   ROCK
 }
