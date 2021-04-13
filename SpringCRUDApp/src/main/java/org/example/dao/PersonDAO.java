@@ -13,13 +13,13 @@ public class PersonDAO {
 
   {
     this.people = new ArrayList<>();
-    people.add(new Person(++PEOPLE_COUNT, "Aleksey"));
-    people.add(new Person(++PEOPLE_COUNT, "Tom"));
-    people.add(new Person(++PEOPLE_COUNT, "Bob"));
-    people.add(new Person(++PEOPLE_COUNT, "Julia"));
-    people.add(new Person(++PEOPLE_COUNT, "Vadim"));
-    people.add(new Person(++PEOPLE_COUNT, "Nix"));
-    people.add(new Person(++PEOPLE_COUNT, "Michael"));
+    people.add(new Person(++PEOPLE_COUNT, "Aleksey", "Ptukha"));
+    people.add(new Person(++PEOPLE_COUNT, "Tom", "Builder"));
+    people.add(new Person(++PEOPLE_COUNT, "Bob", "Hamford"));
+    people.add(new Person(++PEOPLE_COUNT, "Julia", "Kuk"));
+    people.add(new Person(++PEOPLE_COUNT, "Vadim", "Jobs"));
+    people.add(new Person(++PEOPLE_COUNT, "Nix", "Tomhason"));
+    people.add(new Person(++PEOPLE_COUNT, "Michael", "Soyer"));
   }
 
   public List<Person> index() {

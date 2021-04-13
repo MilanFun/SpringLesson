@@ -7,8 +7,8 @@
 <body>
 <h2>Information about person</h2>
 <p th:text="${person.getId()}"></p>
-<p th:text="${person.getName()}"></p>
-<p th:text="${person.getSurname()}"></p>
+<a th:text="${person.getName()}"></a>
+<a th:text="${person.getSurname()}"></a>
 <a th:href="@{/people}">Back to List Page</a>
 </body>
 </html>
