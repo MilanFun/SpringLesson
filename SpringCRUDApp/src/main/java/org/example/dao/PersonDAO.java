@@ -29,4 +29,9 @@ public class PersonDAO {
   public Person show(int id) {
     return this.people.stream().filter(s -> s.getId() == id).findAny().orElse(null);
   }
+
+  public void save(Person person) {
+    person.setId(++PEOPLE_COUNT);
+    this.people.add(person);
+  }
 }

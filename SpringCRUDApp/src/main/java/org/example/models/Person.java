@@ -3,11 +3,20 @@ package org.example.models;
 public class Person {
   private int id;
   private String name;
+  private String surname;
 
   public Person(int id, String name) {
     this.id = id;
     this.name = name;
   }
+
+  public Person(int id, String name, String surname) {
+    this.id = id;
+    this.name = name;
+    this.surname = surname;
+  }
+
+  public Person() {}
 
   public int getId() {
     return id;
@@ -23,5 +32,13 @@ public class Person {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public void setSurname(String surname) {
+    this.surname = surname;
+  }
+
+  public String getSurname() {
+    return this.surname;
   }
 }
