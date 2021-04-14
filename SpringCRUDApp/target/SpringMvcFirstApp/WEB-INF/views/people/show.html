@@ -6,10 +6,12 @@
 </head>
 <body>
 <h2>Information about person</h2>
+
 <a th:text="${person.getName()} + ' ' + ${person.getSurname()}"></a>
-<p th:text="'Age: ' + ${person.getAge()}"></p>
-<p th:text="'Email: ' + ${person.getEmail()}"></p>
+<a th:text="'Age: ' + ${person.getAge()}"></a>
+<a th:text="'Email: ' + ${person.getEmail()}"></a>
 <br>
+
 <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
   <input type="submit" value="Edit"/>
 </form>

@@ -7,10 +7,12 @@
 <body>
 <h2>List</h2>
 <div th:each="person : ${people}">
-  <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()} + ' ' + ${person.getSurname()} + ', ' + ${person.getAge()}"></a>
+  <a th:href="@{people/{id}(id=${person.getId()})}"
+    th:text="'Full Name: ' + ${person.getName()} + ' ' + ${person.getSurname()} + ' Email: ' + ${person.getEmail()}"></a>
 </div>
 <br/>
 <hr/>
+
 <button>
   <a th:href="@{/people/new}">New Person</a>
 </button>
