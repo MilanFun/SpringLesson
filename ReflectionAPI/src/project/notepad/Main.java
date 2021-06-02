@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Main {
 
@@ -46,18 +49,36 @@ public class Main {
 //      }
 
 
-      HelloWorld helloWorld = new HelloWorld();
-      try {
-        Field field = helloWorld.getClass().getDeclaredField("greetings");
-        field.setAccessible(true);
-        field.set(helloWorld, (String) "Hello, world!");
+//      HelloWorld helloWorld = new HelloWorld();
+//      try {
+//        Field field = helloWorld.getClass().getDeclaredField("greetings");
+//        field.setAccessible(true);
+//        field.set(helloWorld, (String) "Hello, world!");
+//
+//        Method method = helloWorld.getClass().getDeclaredMethod("print");
+//        method.setAccessible(true);
+//        method.invoke(helloWorld);
+//
+//      } catch (NoSuchFieldException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+//        e.printStackTrace();
+//      }
+      Set<Person> personSet = new TreeSet<>();
+      personSet.add(new Person("C"));
+      personSet.add(new Person("A"));
+      personSet.add(new Person("B"));
 
-        Method method = helloWorld.getClass().getDeclaredMethod("print");
-        method.setAccessible(true);
-        method.invoke(helloWorld);
+      System.out.println(personSet.stream().sorted(new Comparator<Person>() {
+        @Override
+        public int compare(Person o1, Person o2) {
+          if(o1.equals(o2)) {
+            return 0;
+          } else if(!o1.equals(o2)) {
+            return -1;
+          } else {
+            return  1;
+          }
+        }
+      }));
+   }
 
-      } catch (NoSuchFieldException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
-        e.printStackTrace();
-      }
-    }
 }
