@@ -3,6 +3,7 @@ package entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -10,6 +11,7 @@ import javax.persistence.*;
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private Long id;
 
   @Column(name = "Name")
@@ -17,6 +19,9 @@ public class User {
 
   @Column(name = "Age")
   private int age;
+
+  @ManyToMany(targetEntity = entity.Goods.class)
+  private List<Goods> goods;
 
   public User(String name, int age) {
     this.name = name;

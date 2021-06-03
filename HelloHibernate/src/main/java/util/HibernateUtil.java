@@ -1,13 +1,12 @@
 package util;
 
+import entity.Goods;
 import entity.User;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 
-import javax.imageio.spi.ServiceRegistry;
 import java.util.Properties;
 
 public class HibernateUtil {
@@ -30,6 +29,9 @@ public class HibernateUtil {
 
         configuration.setProperties(settings);
         configuration.addAnnotatedClass(User.class);
+
+        //don't forget to add entity!!!
+        configuration.addAnnotatedClass(Goods.class);
 
         StandardServiceRegistryBuilder serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         sessionFactory = configuration.buildSessionFactory(serviceRegistry.build());

@@ -1,7 +1,10 @@
 package service;
 
 import dao.UserDAO;
+import entity.Goods;
 import entity.User;
+
+import java.util.List;
 
 public class UserService {
   private final UserDAO userDAO = new UserDAO();
@@ -25,4 +28,5 @@ public class UserService {
   public void updateUser(User user) {
     this.userDAO.update(user);
   }
+
 }
